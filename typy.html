@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>www.gdzie-typy.com - GDZIE SĄ TYPY????</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            background-color: #000080;
+            color: #ffff00;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            cursor: crosshair;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #ff00ff;
+        }
+
+        .page {
+            width: 94%;
+            max-width: 1100px;
+            margin: 10px auto;
+            border: 8px ridge #c0c0c0;
+            background-color: #000000;
+            min-height: 95vh;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .top-warning {
+            background-color: red;
+            color: yellow;
+            border: 5px double white;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 15px 5px 5px 5px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ff0000;
+            font-size: clamp(45px, 9vw, 100px);
+            line-height: 0.9;
+            text-shadow:
+                4px 4px #ffff00,
+                -4px -4px #00ffff;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            margin-top: 25px;
+            color: #00ff00;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .blink {
+            animation: blink 0.7s steps(1, start) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                visibility: hidden;
+            }
+        }
+
+        .rainbow {
+            background: linear-gradient(
+                90deg,
+                red,
+                orange,
+                yellow,
+                lime,
+                cyan,
+                blue,
+                magenta,
+                red
+            );
+            color: black;
+            font-weight: bold;
+            padding: 5px;
+            border: 3px solid white;
+            text-align: center;
+        }
+
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: yellow;
+            color: red;
+            border-top: 3px solid red;
+            border-bottom: 3px solid red;
+            font-weight: bold;
+            padding: 4px;
+            margin: 10px 0;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 11s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .main-table td {
+            vertical-align: top;
+            border: 5px ridge #808080;
+            padding: 10px;
+        }
+
+        .sidebar {
+            width: 22%;
+            background-color: #800080;
+        }
+
+        .content {
+            width: 78%;
+            background-color: #001100;
+        }
+
+        .box {
+            border: 5px outset #c0c0c0;
+            margin-bottom: 15px;
+            padding: 8px;
+            background-color: #000080;
+        }
+
+        .box h2 {
+            margin-top: 0;
+            background-color: yellow;
+            color: red;
+            padding: 4px;
+            font-size: 25px;
+        }
+
+        .counter {
+            display: inline-block;
+            background-color: #111;
+            border: 4px inset #aaa;
+            color: red;
+            font-family: "Courier New", monospace;
+            font-size: 25px;
+            letter-spacing: 4px;
+            padding: 5px 10px;
+        }
+
+        .question {
+            font-size: 42px;
+            color: #ff00ff;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 3px 3px #00ffff;
+        }
+
+        .question-small {
+            font-size: 28px;
+            color: yellow;
+            font-weight: bold;
+            margin: 18px 0;
+        }
+
+        .language {
+            margin: 10px 0;
+            padding: 8px;
+            border: 3px dotted lime;
+            background-color: #111;
+        }
+
+        .language:nth-child(odd) {
+            transform: rotate(-0.5deg);
+        }
+
+        .language:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+
+        .polish {
+            color: #ff0000;
+            font-size: 32px;
+        }
+
+        .english {
+            color: #00ffff;
+            font-size: 29px;
+        }
+
+        .german {
+            color: #ffffff;
+            font-size: 27px;
+        }
+
+        .french {
+            color: #ff66ff;
+            font-size: 28px;
+        }
+
+        .spanish {
+            color: #ff9900;
+            font-size: 30px;
+        }
+
+        .italian {
+            color: #00ff00;
+            font-size: 26px;
+        }
+
+        .russian {
+            color: #ffff00;
+            font-size: 29px;
+        }
+
+        .japanese {
+            color: #ff4444;
+            font-size: 27px;
+        }
+
+        .random {
+            position: relative;
+            background-color: #ffff00;
+            color: #000;
+            border: 5px solid red;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .random:before {
+            content: "!!!";
+            position: absolute;
+            left: -15px;
+            top: -20px;
+            background: red;
+            color: yellow;
+            padding: 2px;
+        }
+
+        .important {
+            color: red;
+            background-color: white;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 5px;
+            border: 4px dashed red;
+        }
+
+        .tiny {
+            font-size: 10px;
+            color: #888;
+        }
+
+        .huge {
+            font-size: 70px;
+            color: lime;
+            text-align: center;
+            line-height: 0.8;
+        }
+
+        .warning-box {
+            background-color: #ff0000;
+            color: #ffff00;
+            border: 8px double #ffff00;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .warning-box div {
+            margin: 8px;
+        }
+
+        .guestbook {
+            background-color: white;
+            color: black;
+            border: 5px outset gray;
+            padding: 10px;
+        }
+
+        .guestbook h3 {
+            color: navy;
+        }
+
+        .fake-input {
+            background: white;
+            color: black;
+            border: 2px inset gray;
+            padding: 4px;
+            display: inline-block;
+            width: 80%;
+        }
+
+        .fake-button {
+            background: #c0c0c0;
+            color: black;
+            border: 3px outset white;
+            padding: 3px 10px;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding: 15px;
+            border-top: 5px ridge gray;
+            text-align: center;
+            color: #00ffff;
+        }
+
+        .footer-big {
+            font-size: 40px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .side-question {
+            font-size: 23px;
+            color: yellow;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .construction {
+            color: yellow;
+            background-color: blue;
+            border: 3px solid yellow;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .random-word {
+            position: fixed;
+            z-index: 10;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        .r1 {
+            top: 15%;
+            left: 1%;
+            color: red;
+            transform: rotate(-20deg);
+        }
+
+        .r2 {
+            top: 35%;
+            right: 1%;
+            color: lime;
+            transform: rotate(15deg);
+        }
+
+        .r3 {
+            bottom: 20%;
+            left: 2%;
+            color: cyan;
+            transform: rotate(8deg);
+        }
+
+        .r4 {
+            bottom: 5%;
+            right: 2%;
+            color: magenta;
+            transform: rotate(-12deg);
+        }
+
+        .separator {
+            text-align: center;
+            color: yellow;
+            font-size: 30px;
+            letter-spacing: 10px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar,
+            .content {
+                width: auto;
+                display: block;
+            }
+
+            .main-table,
+            .main-table tbody,
+            .main-table tr,
+            .main-table td {
+                display: block;
+                width: auto;
+            }
+
+            .sidebar {
+                margin-bottom: 10px;
+            }
+
+            .huge {
+                font-size: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="random-word r1">TYPY?</div>
+    <div class="random-word r2">KTO?</div>
+    <div class="random-word r3">GDZIE?</div>
+    <div class="random-word r4">DLACZEGO?</div>
+
+    <div class="page">
+
+        <div class="top-warning blink">
+            ⚠ UWAGA ⚠ UWAGA ⚠ STRONA O TYPACH ⚠ NIE WIADOMO O CO CHODZI ⚠
+        </div>
+
+        <div class="header">
+
+            <div class="construction">
+                ★★★ WWW.GDZIE-TYPY.COM ★★★
+                <br>
+                GDZIE ONI SĄĄĄĄĄĄĄ?????!!!
+            </div>
+
+            <h1>
+                GDZIE SĄ<br>
+                TYPY????
+            </h1>
+
+            <div class="subtitle">
+                CZY KTOŚ WIE GDZIE SĄ TYPY
+                <span class="blink">?????</span>
+            </div>
+
+        </div>
+
+        <div class="marquee">
+            <span>
+                !!! GDZIE SĄ TYPY ??? WHERE ARE THE GUYS ??? WO SIND DIE JUNGS ??? GDZIE SĄ TYPY ??? KTO ICH WIDZIAŁ ??? NIE WIEM !!!
+            </span>
+        </div>
+
+        <div class="rainbow">
+            ★ POMOCY CO Z WAMI LUDZIE? ★
+        </div>
+
+        <table class="main-table">
+            <tr>
+
+                <td class="sidebar">
+
+                    <div class="box">
+
+                        <h2>MENU</h2>
+
+                        <p>
+                            <a href="#">STRONA GŁÓWNA</a>
+                        </p>
+
+                        <p>
+                            <a href="#">GDZIE TYPY</a>
+                        </p>
+
+                        <p>
+                            <a href="#">ARCHIWUM TYPÓW</a>
+                        </p>
+
+                        <p>
+                            <a href="#">ZDJĘCIA TYPÓW</a>
+                        </p>
+
+                        <p>
+                            <a href="#">NIE KLIKAJ</a>
+                        </p>
+
+                        <p>
+                            <a href="#">KSIĘGA GOŚCI</a>
+                        </p>
+
+                    </div>
+
+                    <div class="box">
+
+                        <h2>LICZNIK</h2>
+
+                        <div style="text-align:center;">
+                            ODWIEDZILI NAS:
+                            <br><br>
+
+                            <div class="counter">
+                                0042069
+                            </div>
+
+                            <br><br>
+
+                            TYPY BYŁY TU:
+                            <br>
+
+                            <span class="blink">
+                                NIE WIADOMO
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+
+                        <div class="side-question">
+                            CZY TY<br>
+                            JESTEŚ<br>
+                            TYPEM?
+                        </div>
+
+                        <br>
+
+                        <div style="text-align:center;">
+                            <button class="fake-button"
+                                onclick="alert('NIE. TO NIE JEST TAKIE PROSTE.')">
+                                TAK
+                            </button>
+
+                            <button class="fake-button"
+                                onclick="alert('KŁAMIESZ.')">
+                                NIE
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+
+                        <div class="tiny">
+                            najlepiej oglądać w<br>
+                            Netscape Navigator 4.0<br>
+                            rozdzielczość 800x600<br>
+                            monitor CRT<br>
+                            wyłącz JavaScript<br>
+                            albo nie
+                        </div>
+
+                    </div>
+
+                </td>
+
+                <td class="content">
+
+                    <div class="question">
+                        GDZIE SĄ TYPY????
+                    </div>
+
+                    <div class="warning-box">
+
+                        <div class="huge">
+                            ???
+                        </div>
+
+                        <div>
+                            NIE WIDZĘ ICH
+                        </div>
+
+                        <div>
+                            ALE KTOŚ TU BYŁ
+                        </div>
+
+                        <div>
+                            KTOŚ MUSIAŁ BYĆ
+                        </div>
+
+                        <div>
+                            TYPY NIE ZNIKAJĄ TAK PO PROSTU
+                        </div>
+
+                    </div>
+
+                    <div class="question-small">
+                        PYTANIE ZOSTAŁO ZADANE W WIELU JĘZYKACH:
+                    </div>
+
+                    <div class="language polish">
+                        🇵🇱 GDZIE SĄ TYPY????
+                    </div>
+
+                    <div class="language english">
+                        🇬🇧 WHERE ARE THE GUYS????
+                    </div>
+
+                    <div class="language german">
+                        🇩🇪 WO SIND DIE JUNGS????
+                    </div>
+
+                    <div class="language french">
+                        🇫🇷 OÙ SONT LES GARS????
+                    </div>
+
+                    <div class="language spanish">
+                        🇪🇸 ¿DÓNDE ESTÁN LOS CHICOS????
+                    </div>
+
+                    <div class="language italian">
+                        🇮🇹 DOVE SONO I RAGAZZI????
+                    </div>
+
+                    <div class="language">
+                        🇳🇱 WAAR ZIJN DE JONGENS????
+                    </div>
+
+                    <div class="language">
+                        🇨🇿 KDE JSOU TI CHLAPI????
+                    </div>
+
+                    <div class="language">
+                        🇸🇰 KDE SÚ TÍ CHLAPI????
+                    </div>
+
+                    <div class="language">
+                        🇺🇦 ДЕ ТИПИ????
+                    </div>
+
+                    <div class="language russian">
+                        🇷🇺 ГДЕ ТИПЫ????
+                    </div>
+
+                    <div class="language japanese">
+                        🇯🇵 タイプはどこですか？？？？
+                    </div>
+
+                    <div class="language">
+                        🇰🇷 타입들은 어디에 있습니까????
+                    </div>
+
+                    <div class="language">
+                        🇨🇳 他们在哪儿????
+                    </div>
+
+                    <div class="language">
+                        🇸🇪 VAR ÄR KILLARNA????
+                    </div>
+
+                    <div class="language">
+                        🇳🇴 HVOR ER GUTTA????
+                    </div>
+
+                    <div class="language">
+                        🇫🇮 MISSÄ JÄTKÄT OVAT????
+                    </div>
+
+                    <div class="language">
+                        🇭🇺 HOL VANNAK A SRÁCOK????
+                    </div>
+
+                    <div class="separator">
+                        * * * * * * * * * *
+                    </div>
+
+                    <div class="random">
+
+                        WCZORAJ WIDZIAŁEM TYPA.
+
+                        <br><br>
+
+                        ALBO NIE.
+
+                        <br><br>
+
+                        STAŁ PRZY SKLEPIE.
+
+                        <br>
+
+                        CHYBA PRZY SKLEPIE.
+
+                        <br><br>
+
+                        MOŻE TO BYŁ KOSZ NA ŚMIECI.
+
+                        <br><br>
+
+                        ALE KOSZE NIE MAJĄ BUTÓW.
+
+                        <br><br>
+
+                        <span class="blink">
+                            CZY KOSZE MAJĄ BUTY?
+                        </span>
+
+                    </div>
+
+                    <div class="important">
+
+                        !!! INFORMACJA !!!
+
+                        <br><br>
+
+                        JEŚLI WIDZIAŁEŚ TYPA
+                        <br>
+
+                        NIE MÓW NIKOMU.
+
+                        <br><br>
+
+                        ALE NAPISZ W KSIĘDZE GOŚCI.
+
+                        <br><br>
+
+                        <span class="blink">
+                            ALBO NAJPIERW SPRAWDŹ CZY TO NA PEWNO TYP.
+                        </span>
+
+                    </div>
+
+                    <div class="question">
+                        GDZIE SĄ TYPY????
+                    </div>
+
+                    <div class="random">
+
+                        RAPORT NR 0007:
+
+                        <br><br>
+
+                        GODZINA: 03:17
+
+                        <br>
+
+                        MIEJSCE: NIEZNANE
+
+                        <br>
+
+                        LICZBA TYPÓW: 0
+
+                        <br>
+
+                        LICZBA PODEJRZANYCH: 14
+
+                        <br>
+
+                        LICZBA PYTAŃ: ZA DUŻO
+
+                        <br><br>
+
+                        WNIOSEK:
+
+                        <br><br>
+
+                        <span style="font-size:40px;">
+                            GDZIE SĄ TYPY
+                        </span>
+
+                    </div>
+
+                    <div class="warning-box">
+
+                        <div style="font-size:35px;">
+                            NIE ODŚWIEŻAJ STRONY
+                        </div>
+
+                        <div>
+                            TYPY MOGĄ TO ZOBACZYĆ
+                        </div>
+
+                        <div>
+                            TYPY MOGĄ BYĆ W INTERNECIE
+                        </div>
+
+                        <div>
+                            INTERNET MOŻE BYĆ TYPEM
+                        </div>
+
+                    </div>
+
+                    <div class="question-small">
+                        PYTANIE DNIA:
+                    </div>
+
+                    <div style="
+                        background-color:#000;
+                        border:5px ridge #aaa;
+                        padding:15px;
+                        text-align:center;
+                    ">
+
+                        <span style="
+                            color:white;
+                            font-size:25px;
+                        ">
+                            JEŻELI TYP JEST W LESIE,
+                        </span>
+
+                        <br><br>
+
+                        <span style="
+                            color:red;
+                            font-size:35px;
+                        ">
+                            A NIKT GO NIE WIDZI...
+                        </span>
+
+                        <br><br>
+
+                        <span style="
+                            color:lime;
+                            font-size:45px;
+                            font-weight:bold;
+                        ">
+                            TO CZY ON NADAL JEST TYPEM????
+                        </span>
+
+                    </div>
+
+                    <br>
+
+                    <div class="guestbook">
+
+                        <h3>
+                            ★ KSIĘGA GOŚCI ★
+                        </h3>
+
+                        <p>
+                            Wpisz gdzie ostatnio widziałeś typa:
+                        </p>
+
+                        <div class="fake-input">
+                            wpisać tutaj...
+                        </div>
+
+                        <br><br>
+
+                        <button
+                            class="fake-button"
+                            onclick="alert('WPIS ZOSTAŁ ZAPISANY. ALE CZY TO BYŁ TYP?')">
+                            DODAJ WPIS
+                        </button>
+
+                        <hr>
+
+                        <b>Typ1998:</b>
+                        Widziałem jednego w autobusie.
+                        <br><br>
+
+                        <b>anonim:</b>
+                        NIE WIERZCIE MU.
+                        <br><br>
+
+                        <b>Admin:</b>
+                        Proszę nie spamować typami.
+                        <br><br>
+
+                        <b>Janusz:</b>
+                        A KTÓRYMI TYPAMI???
+                        <br><br>
+
+                        <b>Admin:</b>
+                        właśnie o to pytam.
+                        <br><br>
+
+                        <b>???:</b>
+                        <span class="blink">
+                            GDZIE SĄ TYPY
+                        </span>
+
+                    </div>
+
+                </td>
+
+            </tr>
+        </table>
+
+        <div class="marquee">
+            <span>
+                GDZIE SĄ TYPY? GDZIE SĄ TYPY? GDZIE SĄ TYPY? GDZIE SĄ TYPY? GDZIE SĄ TYPY? GDZIE SĄ TYPY?
+            </span>
+        </div>
+
+        <div class="footer">
+
+            <div class="footer-big">
+                GDZIE SĄ TYPY????
+            </div>
+
+            <br>
+
+            Ostatnia aktualizacja:
+            <b>19.08.2026</b>
+
+            <br><br>
+
+            UWAGA
+            <span style="color:red;">
+                GDZIE TYPY??
+            </span>
+
+            <br><br>
+
+            <span class="tiny">
+                © 1997-2026 GDZIE-TYPY.COM
+                <br>
+                Wszystkie prawa zastrzeżone, oprócz praw TYPÓW.
+                <br>
+                Nie odpowiadamy za zaginięcia, pojawienia się ani
+                nieautoryzowane rozmnażanie typów.
+            </span>
+
+            <br><br>
+
+            <span class="blink">
+                <b>
+                    JEŚLI CZYTASZ TEN TEKST, TO ZNACZY ŻE TYPY JUŻ WIEDZĄ.
+                </b>
+            </span>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
