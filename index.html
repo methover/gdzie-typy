@@ -327,6 +327,20 @@
             width: 80%;
         }
 
+        .guestbook-input {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            margin: 6px 0;
+            padding: 5px;
+            border: 2px inset gray;
+            font: inherit;
+        }
+
+        .guestbook-entry {
+            margin: 12px 0;
+        }
+
         .fake-button {
             background: #c0c0c0;
             color: black;
@@ -847,13 +861,15 @@
                             Wpisz gdzie ostatnio widziałeś typa:
                         </p>
 
-                        <div class="fake-input">
-                            wpisz tutaj...
-                        </div>
+                        <form id="guestbook-form">
+                            <input class="guestbook-input" id="guestbook-nick" name="nick" type="text" placeholder="Twój nick..." required>
+                            <textarea class="guestbook-input" id="guestbook-message" name="message" rows="3" placeholder="Twoja wiadomość..." required></textarea>
+                            <button class="fake-button" type="submit">DODAJ WPIS</button>
+                        </form>
 
                         <br><br>
 
-                        <button
+                        <button hidden
                             class="fake-button"
                             onclick="alert('WPIS ZOSTAŁ ZAPISANY. ALE CZY TO BYŁ TYP?')">
                             DODAJ WPIS
@@ -885,6 +901,26 @@
                         <span class="blink">
                             GDZIE SĄ TYPY
                         </span>
+
+                        <script>
+                            document.getElementById('guestbook-form').addEventListener('submit', function (event) {
+                                event.preventDefault();
+
+                                const nick = document.getElementById('guestbook-nick').value.trim();
+                                const message = document.getElementById('guestbook-message').value.trim();
+                                if (!nick || !message) return;
+
+                                const entry = document.createElement('div');
+                                entry.className = 'guestbook-entry';
+
+                                const author = document.createElement('b');
+                                author.textContent = nick + ':';
+                                entry.append(author, ' ' + message);
+
+                                document.querySelector('.guestbook').appendChild(entry);
+                                this.reset();
+                            });
+                        </script>
 
                     </div>
 
